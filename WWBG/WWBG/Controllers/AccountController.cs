@@ -70,6 +70,8 @@ namespace WWBG.Controllers
         {
             if (!ModelState.IsValid)
             {
+
+                //let me see
                 return View(model);
             }
 
