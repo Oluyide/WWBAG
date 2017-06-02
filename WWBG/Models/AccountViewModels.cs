@@ -64,6 +64,49 @@ namespace WWBG.Models
 
     public class RegisterViewModel
     {
+        
+        [Required]
+        
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+        [Required]
+       
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+
+        [Required]
+
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Required]
+       
+        [Display(Name = "Academic Level")]
+        public string AcademicLevel  { get; set; }
+
+        [Required]
+        
+        [Display(Name = "Faculty")]
+        public string Faculty { get; set; }
+
+        [Required]
+        
+        [Display(Name = "Class")]
+        public string Class { get; set; }
+
+        [Required]
+        [Display(Name = "Sex")]
+        public string Sex { get; set; }
+
+        [Required]
+        [Display(Name = "Date of birth ")]
+        public string DateBirth { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number ")]
+        public string PhoneNumber { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +122,8 @@ namespace WWBG.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string Picture{ get; set; }
     }
 
     public class ResetPasswordViewModel

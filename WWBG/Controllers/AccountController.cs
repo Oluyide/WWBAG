@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WWBG.Models;
+using System.Collections.Generic;
 
 namespace WWBG.Controllers
 {
@@ -139,8 +140,45 @@ namespace WWBG.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string roles)
         {
+            ViewBag.role = roles;
+           
+            List<SelectListItem> Academics = new List<SelectListItem>();
+            Academics.Add(new SelectListItem
+                {
+                    Text = "Primary",
+                    Value = "1"
+                });
+            Academics.Add(new SelectListItem
+                {
+                    Text = "Secondary",
+                    Value = "2",
+                    Selected = true
+                });
+            Academics.Add(new SelectListItem
+                {
+                    Text = "Tertiary",
+                    Value = "3"
+                });
+
+            List<SelectListItem> gender = new List<SelectListItem>();
+            gender.Add(new SelectListItem
+            {
+                Text = "Male",
+                Value = "1"
+            });
+            gender.Add(new SelectListItem
+            {
+                Text = "Female",
+                Value = "2",
+                Selected = true
+            });
+
+
+            ViewBag.AcademicLevel = new SelectList(Academics, "Value", "Text");
+            ViewBag.gender = new SelectList(gender, "Value", "Text");
+
             return View();
         }
 
