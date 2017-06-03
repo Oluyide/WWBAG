@@ -24,8 +24,10 @@ namespace WWBG
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css", "~/Content/themes/base/jquery-ui.min.css", "~/Content/themes/base/datepicker.css",
+                      "~/Content/bootstrap.css", "~/Content/themes/base/jquery-ui.min.css", "~/Content/themes/base/datepicker.css", "~/Content/NewCSS1/custom.css",
+                      "~/Content/NewCSS1/custom.min.css",
                       "~/Content/site.css"));
+
         }
     }
 }

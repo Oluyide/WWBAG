@@ -187,8 +187,20 @@ namespace WWBG.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase uploadedPic)
         {
+
+
+            var validImageTypes = new string[]
+            {
+            "image/gif",
+            "image/jpeg",
+            "image/pjpeg",
+            "image/png",
+
+    
+             };
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
