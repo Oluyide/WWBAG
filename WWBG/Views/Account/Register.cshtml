@@ -1,133 +1,178 @@
 ﻿@model WWBG.Models.RegisterViewModel
 @{
+
     ViewBag.Title = "Register";
-}
-<h2>@ViewBag.Title.</h2>
-@using (Ajax.BeginForm("Register", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
 
-                <hr />
+        <!DOCTYPE html>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap -->
+        <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+        <!-- iCheck -->
+        <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+        <!-- bootstrap-wysiwyg -->
+        <link href="~/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+        <!-- Select2 -->
+        <link href="~/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+        <!-- Switchery -->
+        <link href="~/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+        <!-- starrr -->
+        <link href="~/vendors/starrr/dist/starrr.css" rel="stylesheet">
+        <!-- bootstrap-daterangepicker -->
+        <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <!-- Custom Theme Style -->
+    <link href="~/Content/NewCSS1/css/custom.min.css" rel="stylesheet">
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet">
+
+          }
+
+
+<div style="width:50% ; margin-left:auto; margin-right:auto">
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="">
+            <div class="x_title"><h1>Register</h1></div>
+            @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
                 @Html.ValidationSummary("", new { @class = "text-danger" })
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                                    <!-- start form for validation -->
+                <form data-parsley-validate>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.UserName, new { @class = "" })
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                     </div>
-                </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.Country, new { @class = "" })
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
-                    </div>
-                </div>
+                        </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.State, new { @class = "" })
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.State, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
-                    </div>
-                </div>
+                                                @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.AcademicLevel, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(m => m.AcademicLevel, (SelectList)ViewBag.AcademicLevel, "-- Select Academic Level --", new { @class = "form-control", @id = "academics" })
 
-                    </div>
-                </div>
+                            @Html.LabelFor(m => m.AcademicLevel, new { @class = "" })
 
-                <div class="form-group" id = "faculty">
-                    @Html.LabelFor(m => m.Faculty, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control" })
-                    </div>
-                </div>
+                            @Html.DropDownListFor(m => m.AcademicLevel, (SelectList)ViewBag.AcademicLevel, "-Select-", new { @class = "form-control", @id = "academics" })
+                            </div>
+                        <div class="col-md-6"  id="faculty">
+                            @Html.LabelFor(m => m.Faculty, new { @class = "" , @id = "faculty" })
+                          @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control", @id = "faculty" })                           
+                        </div>
+                      <div class="col-md-6" id="class">
+                            @Html.LabelFor(m => m.Class, new { @class = "", @id = "class" })
+                            @Html.TextBoxFor(m => m.Class, new { @class = "form-control", @id = "class" })
+                        </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.Sex, new { @class = "" })
 
-                <div class="form-group" id="class">
-                    @Html.LabelFor(m => m.Class, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Class, new { @class = "form-control" })
-                    </div>
-                </div>
+                        @Html.DropDownListFor(m => m.Sex, (SelectList)ViewBag.gender, "-Select-", new { @class = "form-control" })
+                        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Sex, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(m => m.Sex, (SelectList)ViewBag.gender, "-- Gender --", new { @class = "form-control" })
-                    </div>
-                </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.DateBirth, new { @class = "" })
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.DateBirth, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.DateBirth, new { @class = "form-control datepicker" })
-                    </div>
-                </div>
+                        @Html.TextBoxFor(m => m.DateBirth, new { @class = "form-control date-picker" })
+                        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-                    </div>
-                </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "" })
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Picture, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Picture, new { @class = "form-control" })
-                    </div>
-                </div>
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control"  })
+                        </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.Email, new { @class = "" })
+
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    </div>
-                </div>
+                        </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.Password, new { @class = "" })
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                    </div>
-             </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                        </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
+
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    <div class="col-md-6 ">
+                        @Html.LabelFor(m => m.Picture, new { @class = "" })
+                        <input class="btn btn-primary form-control" style="width:100%;" type="file" name="uploadedPic" />
                     </div>
-                </div>
+                    <br />
+</form>
+            <br />
+            <center>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-default" value="Register" />
-                    </div>
+                        <button type="submit" class="btn btn-success">Register</button>
                 </div>
-}
+            </center>
+
+            }
+
+        </div>
+
+
+        </div>
+
+    </div>
+    </div>
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Content/Landing/js/jquery.js"></script>
+<script src="~/Content/Landing/js/bootstrap.min.js"></script>
 @section Scripts {
-    <script type="text/javascript">
+    
+<script type="text/javascript">
         $(function () { // will trigger when the document is ready
             $('#class').hide();
             $('#faculty').hide();
-            $('.datepicker').datepicker(); //Initialise any date pickers
+            $('.date-picker').datepicker(); //Initialise any date pickers
         });
 
         $('#academics').on('change', function () {
-            if(this.value==3)
-            {
+            if (this.value == 3) {
                 $('#faculty').show();
                 $('#class').hide();
             }
-            else
-            {
+            else {
                 $('#class').show();
                 $('#faculty').hide();
             }
 
         })
-    </script>
-    @Scripts.Render("~/bundles/jqueryval")
+</script>
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

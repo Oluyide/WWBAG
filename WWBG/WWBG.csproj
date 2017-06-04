@@ -204,6 +204,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Landing\images\images.jpg" />
+    <Content Include="Content\Landing\images\img.jpg" />
+    <Content Include="Content\Landing\images\img1.JPG" />
+    <Content Include="Content\Landing\images\img2.JPG" />
+    <Content Include="Content\Landing\images\img3.JPG" />
+    <Content Include="Content\Landing\images\img4.JPG" />
+    <Content Include="Content\Landing\images\img5.JPG" />
+    <Content Include="Content\Landing\images\img6.JPG" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -310,6 +318,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Landing\css\" />
+    <Folder Include="Content\Landing\fonts\" />
+    <Folder Include="Content\Landing\js\" />
+    <Folder Include="Content\NewCSS1\css\" />
+    <Folder Include="vendors\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
