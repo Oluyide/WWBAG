@@ -39,8 +39,8 @@
 <div style="width:50% ; margin-left:auto; margin-right:auto">
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title"><h1>Registration Form</h1></div>
+        <div class="">
+            <div class="x_title"><h1>Register</h1></div>
             @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -67,20 +67,20 @@
 
                             @Html.LabelFor(m => m.AcademicLevel, new { @class = "" })
 
-                            @Html.DropDownListFor(m => m.AcademicLevel, (SelectList)ViewBag.AcademicLevel, "-- Select Academic Level --", new { @class = "form-control", @id = "academics" })
+                            @Html.DropDownListFor(m => m.AcademicLevel, (SelectList)ViewBag.AcademicLevel, "-Select-", new { @class = "form-control", @id = "academics" })
                             </div>
-                        <div class="col-md-12"  id="faculty">
+                        <div class="col-md-6"  id="faculty">
                             @Html.LabelFor(m => m.Faculty, new { @class = "" , @id = "faculty" })
                           @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control", @id = "faculty" })                           
                         </div>
-                      <div class="col-md-12" id="class">
+                      <div class="col-md-6" id="class">
                             @Html.LabelFor(m => m.Class, new { @class = "", @id = "class" })
                             @Html.TextBoxFor(m => m.Class, new { @class = "form-control", @id = "class" })
                         </div>
                     <div class="col-md-6">
                         @Html.LabelFor(m => m.Sex, new { @class = "" })
 
-                        @Html.DropDownListFor(m => m.Sex, (SelectList)ViewBag.gender, "-- Gender --", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.Sex, (SelectList)ViewBag.gender, "-Select-", new { @class = "form-control" })
                         </div>
 
                     <div class="col-md-6">
@@ -110,9 +110,9 @@
 
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                         </div>
-                    <div class="col-md-12 ">
+                    <div class="col-md-6 ">
                         @Html.LabelFor(m => m.Picture, new { @class = "" })
-                        <input class="btn btn-primary" style="width:100%;" type="file" name="uploadedPic" />
+                        <input class="btn btn-primary form-control" style="width:100%;" type="file" name="uploadedPic" />
                     </div>
                     <br />
 </form>
