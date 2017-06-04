@@ -10,6 +10,8 @@ namespace WWBG.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using web.core.Repository;
+    using web.core.Interface;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +63,11 @@ namespace WWBG.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            kernel.Bind<IUsersServices>().To<UsersServices>();
+            //kernel.Bind(typeof(IRepository<>)).To(typeof(SqlRepository<>));
+            //kernel.Bind<ApplicationUserManager>().ToMethod(t => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()).InRequestScope();
+            //kernel.Bind<ApplicationSignInManager>().ToMethod(t => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>()).InRequestScope();
+
+        }
     }
 }

@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WWBG.Models;
 using System.Collections.Generic;
+using web.core.Interface;
+using web.core.Models;
 
 namespace WWBG.Controllers
 {
@@ -18,15 +20,23 @@ namespace WWBG.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IUsersServices _usersinfo;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+
+      
+
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUsersServices userinfo)
         {
             UserManager = userManager;
+
             SignInManager = signInManager;
+
+            _usersinfo = userinfo;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -190,19 +200,34 @@ namespace WWBG.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model!=null)
             {
+                
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                await this.UserManager.AddToRoleAsync(user.Id, ViewBag.role);
                 var result = await UserManager.CreateAsync(user, model.Password);
+                await this.UserManager.AddToRoleAsync(user.Id, ViewBag.role);
+
+                UserInfo info = new UserInfo();
+                
+
+               
+                
+
                 if (result.Succeeded)
                 {
+
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
 
                     return RedirectToAction("Index", "Home");
                 }

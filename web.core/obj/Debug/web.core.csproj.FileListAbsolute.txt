@@ -7,3 +7,4 @@ C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\bin\Debug\EntityFramework
 C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\obj\Debug\web.core.dll
 C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\obj\Debug\web.core.pdb
+C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\obj\Debug\web.core.csprojResolveAssemblyReference.cache
