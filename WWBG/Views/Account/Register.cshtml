@@ -47,47 +47,19 @@
 
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                                     <!-- start form for validation -->
-                <form data-parsley-validate>
+              
                     <div class="col-md-6">
-                        @Html.LabelFor(m => m.UserName, new { @class = "" })
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.LabelFor(m => m.FirstName, new { @class = "" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
                     </div>
                     <div class="col-md-6">
-                        @Html.LabelFor(m => m.Country, new { @class = "" })
+                        @Html.LabelFor(m => m.LastName, new { @class = "" })
 
-                        @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                         </div>
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.State, new { @class = "" })
+                    
 
-                                                @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
-                        </div>
-                        <div class="col-md-6">
-
-
-                            @Html.LabelFor(m => m.AcademicLevel, new { @class = "" })
-
-                            @Html.DropDownListFor(m => m.AcademicLevel, (SelectList)ViewBag.AcademicLevel, "-Select-", new { @class = "form-control", @id = "academics" })
-                            </div>
-                        <div class="col-md-6"  id="faculty">
-                            @Html.LabelFor(m => m.Faculty, new { @class = "" , @id = "faculty" })
-                          @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control", @id = "faculty" })                           
-                        </div>
-                      <div class="col-md-6" id="class">
-                            @Html.LabelFor(m => m.Class, new { @class = "", @id = "class" })
-                            @Html.TextBoxFor(m => m.Class, new { @class = "form-control", @id = "class" })
-                        </div>
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.Sex, new { @class = "" })
-
-                        @Html.DropDownListFor(m => m.Sex, (SelectList)ViewBag.gender, "-Select-", new { @class = "form-control" })
-                        </div>
-
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.DateBirth, new { @class = "" })
-
-                        @Html.TextBoxFor(m => m.DateBirth, new { @class = "form-control date-picker" })
-                        </div>
+                
 
                     <div class="col-md-6">
                         @Html.LabelFor(m => m.PhoneNumber, new { @class = "" })
@@ -110,16 +82,13 @@
 
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                         </div>
-                    <div class="col-md-6 ">
-                        @Html.LabelFor(m => m.Picture, new { @class = "" })
-                        <input class="btn btn-primary form-control" style="width:100%;" type="file" name="uploadedPic" />
-                    </div>
+                  
                     <br />
-</form>
+
             <br />
             <center>
                 <div class="form-group">
-                        <button type="submit" class="btn btn-success">Register</button>
+                      <input type="submit"  class="btn btn-success" value="Register" />
                 </div>
             </center>
 

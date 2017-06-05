@@ -5,18 +5,15 @@ namespace web.core.Models
 {
     public partial class UserInfo
     {
+        public UserInfo()
+        {
+            this.UserProfiles = new List<UserProfile>();
+        }
+
         public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Country { get; set; }
-        public string State { get; set; }
-        public string AcademicLevel { get; set; }
-        public string Faculty { get; set; }
-        public string Class { get; set; }
-        public string Sex { get; set; }
-        public Nullable<System.DateTime> DateBirth { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public string Picture { get; set; }
-        public string UserId { get; set; }
+        public string FirstName { get; set; }
+        public bool IsActive { get; set; }
+        public string LastName { get; set; }
+        public virtual ICollection<UserProfile> UserProfiles { get; set; }
     }
 }

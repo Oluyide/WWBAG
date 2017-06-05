@@ -21,7 +21,7 @@ namespace WWBG.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("WWBGContext", throwIfV1Schema: false)
         {
         }
 

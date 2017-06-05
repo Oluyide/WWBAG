@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WWBG.Models
@@ -67,41 +68,46 @@ namespace WWBG.Models
         
         [Required]
         
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
-
-        [Required]
-       
-        [Display(Name = "Country")]
-        public string Country { get; set; }
+        [Display(Name = "First Name")]
+        public string FirstName{ get; set; }
 
         [Required]
 
-        [Display(Name = "State")]
-        public string State { get; set; }
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
 
-        [Required]
-       
-        [Display(Name = "Academic Level")]
-        public string AcademicLevel  { get; set; }
+        //[Required]
 
-        [Required]
-        
-        [Display(Name = "Faculty")]
-        public string Faculty { get; set; }
+        //[Display(Name = "Country")]
+        //public string Country { get; set; }
 
-        [Required]
-        
-        [Display(Name = "Class")]
-        public string Class { get; set; }
+        //[Required]
 
-        [Required]
-        [Display(Name = "Sex")]
-        public string Sex { get; set; }
+        //[Display(Name = "State")]
+        //public string State { get; set; }
 
-        [Required]
-        [Display(Name = "Date of birth ")]
-        public string DateBirth { get; set; }
+        //[Required]
+
+        //[Display(Name = "Academic Level")]
+        //public string AcademicLevel  { get; set; }
+
+        //[Required]
+
+        //[Display(Name = "Faculty")]
+        //public string Faculty { get; set; }
+
+        //[Required]
+
+        //[Display(Name = "Class")]
+        //public string Class { get; set; }
+
+        //[Required]
+        //[Display(Name = "Sex")]
+        //public string Sex { get; set; }
+
+        //[Required]
+        //[Display(Name = "Date of birth ")]
+        //public DateTime DateBirth { get; set; }
 
         [Required]
         [Display(Name = "Phone Number ")]
@@ -123,7 +129,7 @@ namespace WWBG.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public string Picture{ get; set; }
+        //public string Picture{ get; set; }
     }
 
     public class ResetPasswordViewModel

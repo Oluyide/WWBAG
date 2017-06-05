@@ -12,6 +12,7 @@ using WWBG.Models;
 using System.Collections.Generic;
 using web.core.Interface;
 using web.core.Models;
+using web.core.Repository;
 
 namespace WWBG.Controllers
 {
@@ -204,29 +205,33 @@ namespace WWBG.Controllers
             {
                 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-
-                await this.UserManager.AddToRoleAsync(user.Id, ViewBag.role);
+                //await this.UserManager.AddToRoleAsync(user.Id, ViewBag.role);
                 var result = await UserManager.CreateAsync(user, model.Password);
-                await this.UserManager.AddToRoleAsync(user.Id, ViewBag.role);
-
-                UserInfo info = new UserInfo();
                 
+                
+               //await this.UserManager.AddToRoleAsync(user.Id, ViewBag.role);
 
-               
                 
 
                 if (result.Succeeded)
                 {
 
-                    
+                    SqlRepository<UserInfo> repo = new SqlRepository<UserInfo>();
+                    UserInfo info = new UserInfo();
+                    info.FirstName = model.FirstName;
+                    info.LastName = model.LastName;
+                    info.IsActive = false;
+                    repo.Add(info);
+
+                    repo.SaveChanges();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    
+
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
 
                     return RedirectToAction("Index", "Home");
