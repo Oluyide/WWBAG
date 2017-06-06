@@ -8,3 +8,13 @@ C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\bin\Debug\EntityFramework
 C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\obj\Debug\web.core.dll
 C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\obj\Debug\web.core.pdb
 C:\Users\Oluwatomi.Okuboyejo\Documents\WWBAG2\web.core\obj\Debug\web.core.csprojResolveAssemblyReference.cache
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\web.core.dll.config
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\web.core.dll
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\web.core.pdb
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.dll
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.xml
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\obj\Debug\web.core.csprojResolveAssemblyReference.cache
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\obj\Debug\web.core.dll
+C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\obj\Debug\web.core.pdb

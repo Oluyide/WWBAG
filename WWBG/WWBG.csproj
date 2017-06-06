@@ -325,6 +325,8 @@
     <Folder Include="Content\Landing\fonts\" />
     <Folder Include="Content\Landing\js\" />
     <Folder Include="Content\NewCSS1\css\" />
+    <Folder Include="Content\NewCSS1\images\" />
+    <Folder Include="Content\NewCSS1\js\" />
     <Folder Include="vendors\" />
   </ItemGroup>
   <ItemGroup>
