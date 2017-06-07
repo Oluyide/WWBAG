@@ -30,7 +30,7 @@ namespace WWBG.Models
 
         [Required]
         [Display(Name = "Gender")]
-        public string Sex { get; set; }
+        public string Gender { get; set; }
 
         [Required]
         [Display(Name = "Date of birth ")]
