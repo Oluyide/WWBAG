@@ -214,8 +214,11 @@
     <Content Include="Content\Landing\images\img4.JPG" />
     <Content Include="Content\Landing\images\img5.JPG" />
     <Content Include="Content\Landing\images\img6.JPG" />
+    <Content Include="Content\Landing\images\reg.JPG" />
+    <Content Include="Content\login1.JPG" />
     <Content Include="Content\NewCSS1\js\custom.js" />
     <Content Include="Content\NewCSS1\js\custom.min.js" />
+    <Content Include="Content\reg.JPG" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -329,6 +332,12 @@
     <Folder Include="Content\Landing\js\" />
     <Folder Include="Content\NewCSS1\css\" />
     <Folder Include="Content\NewCSS1\images\" />
+    <Folder Include="Content\Profile\css\" />
+    <Folder Include="Content\Profile\custom\" />
+    <Folder Include="Content\Profile\fonts\" />
+    <Folder Include="Content\Profile\img\" />
+    <Folder Include="Content\Profile\js\" />
+    <Folder Include="Content\Profile\plugins\" />
     <Folder Include="vendors\" />
   </ItemGroup>
   <ItemGroup>

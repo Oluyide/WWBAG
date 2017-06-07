@@ -15,6 +15,5 @@ C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.dll
 C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.xml
 C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\obj\Debug\web.core.csprojResolveAssemblyReference.cache
 C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\obj\Debug\web.core.dll
 C:\Users\ENITILO ALICE\Documents\WWBAG\web.core\obj\Debug\web.core.pdb

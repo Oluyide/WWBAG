@@ -1,147 +1,165 @@
 ﻿@model WWBG.Models.RegisterViewModel
 @{
+    ViewBag.Title = "Regiser";
+    <!DOCTYPE html>
 
-    ViewBag.Title = "Register";
+        <!-- /.website title -->
 
-        <!DOCTYPE html>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Meta, title, CSS, favicons, etc. -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <!-- Bootstrap -->
-        <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- NProgress -->
-        <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
-        <!-- iCheck -->
-        <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-        <!-- bootstrap-wysiwyg -->
-        <link href="~/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-        <!-- Select2 -->
-        <link href="~/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-        <!-- Switchery -->
-        <link href="~/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-        <!-- starrr -->
-        <link href="~/vendors/starrr/dist/starrr.css" rel="stylesheet">
-        <!-- bootstrap-daterangepicker -->
-        <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <!-- CSS Files -->
+    <link href="~/Content/Landing/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Landing/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Landing/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="~/Content/Landing/css/animate.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Landing/css/owl.theme.css" rel="stylesheet">
+    <link href="~/Content/Landing/css/owl.carousel.css" rel="stylesheet">
 
-        <!-- Custom Theme Style -->
-    <link href="~/Content/NewCSS1/css/custom.min.css" rel="stylesheet">
-    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet">
+        <!-- Colors -->
+    <link href="~/Content/Landing/css/css-index.css" rel="stylesheet" media="screen">
+        <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-yellow.css" rel="stylesheet" media="screen"> -->
+        <!-- Google Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
 
-          }
+   
+}
+<div class="fullscreen landing parallax" style="background-image:url('/Content/reg.JPG'); height:auto" data-img-width="2000" data-img-height="1333" data-diff="100">
 
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
 
-<div style="width:50% ; margin-left:auto; margin-right:auto">
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="">
-            <div class="x_title"><h1>Register</h1></div>
-            @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
+                    <!-- /.logo -->
+                    <div class="logo wow fadeInDown"> <a href=""><img src="~/Content/Landing/images/logo.png" alt="logo"></a></div>
 
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                                    <!-- start form for validation -->
-              
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.FirstName, new { @class = "" })
-                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    <!-- /.main title -->
+                    <h1 class="wow fadeInLeft">
+                        Registration Form
+                    </h1>
+
+                    <!-- /.header paragraph -->
+                    <div class="landing-text wow fadeInUp">
+                        
                     </div>
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.LastName, new { @class = "" })
 
-                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-                        </div>
-                    
-
-                
-
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "" })
-
-                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control"  })
-                        </div>
-
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.Email, new { @class = "" })
-
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        </div>
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.Password, new { @class = "" })
-
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        </div>
-                    <div class="col-md-6">
-                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
-
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                        </div>
-                  
+                    <!-- /.header button -->
                     <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="head-btn wow fadeInLeft">
+                        <p>Already have an account?</p>
+                        <input type="button" class="btn-default" value="Login" onclick="location.href='@Url.Action("Login", "Account")'" />
 
-            <br />
-            <center>
-                <div class="form-group">
-                      <input type="submit"  class="btn btn-success" value="Register" />
+                    </div>
+
+
+
                 </div>
-            </center>
 
-            }
+                <div class="col-md-3">
 
+
+                    <div style="background-color:white" class="x_panel">
+                        <div class="x_title"><h1></h1></div>
+                        
+              
+                        <hr />
+
+                        @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
+            {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    <!-- start form for validation -->
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control has-feedback-left", @placeholder = "First name", @required = "" })
+                                <span class="fa fa-user form-control-feedback left" ></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control has-feedback-left", @placeholder = "Last name", @required = "" })
+                                <span class="fa fa-user form-control-feedback left"></span>
+                            </div>
+
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control has-feedback-left", @placeholder = "Phone number", @required = "" })
+                                <span class="fa fa-phone form-control-feedback left "></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control has-feedback-left", @placeholder = "Email", @required = "" })
+                                <span class="fa fa-envelope form-control-feedback left" ></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control has-feedback-left", @placeholder = "Password", @required = "" })
+                                    <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                                <div style="margin-bottom:4%" class="form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control has-feedback-left", @placeholder = "Confirm Password", @required = "" })
+                                    <span class="fa fa-lock form-control-feedback left" ></span>
+                                </div>
+
+                           
+                                <center>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success" value="Register" />
+                                    </div>
+                                </center>
+                                <hr />
+                                
+                                }
+
+                            </div>
+
+
+                </div>
+
+
+
+                <!-- /.signup form -->
+                @*<div class="col-md-5">
+
+                        <div class="signup-header wow fadeInUp">
+                            <h3 class="form-title text-center">GET STARTED</h3>
+                            <form class="form-header" action="http://moxdesign.us10.list-manage.com/subscribe/post" role="form" method="POST" id="#">
+                                <input type="hidden" name="u" value="503bdae81fde8612ff4944435">
+                                <input type="hidden" name="id" value="bfdba52708">
+                                <div class="form-group">
+                                    <input class="form-control input-lg" name="MERGE1" id="name" type="text" placeholder="Your name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control input-lg" name="MERGE0" id="email" type="email" placeholder="Email address" required>
+                                </div>
+                                <div class="form-group last">
+                                    <input type="submit" class="btn btn-warning btn-block btn-lg" value="SUBSCRIBE">
+                                </div>
+                                <p class="privacy text-center">We will not share your email. Read our <a href="privacy.html">privacy policy</a>.</p>
+                            </form>
+                        </div>
+
+                    </div>*@
+            </div>
         </div>
-
-
-        </div>
-
     </div>
-    </div>
+</div>
 
-<script src="~/Scripts/bootstrap.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<!-- /.javascript files -->
 <script src="~/Content/Landing/js/jquery.js"></script>
 <script src="~/Content/Landing/js/bootstrap.min.js"></script>
-@section Scripts {
-    
-<script type="text/javascript">
-        $(function () { // will trigger when the document is ready
-            $('#class').hide();
-            $('#faculty').hide();
-            $('.date-picker').datepicker(); //Initialise any date pickers
-        });
-
-        $('#academics').on('change', function () {
-            if (this.value == 3) {
-                $('#faculty').show();
-                $('#class').hide();
-            }
-            else {
-                $('#class').show();
-                $('#faculty').hide();
-            }
-
-        })
+<script src="~/Content/Landing/js/custom.js"></script>
+<script src="~/Content/Landing/js/jquery.sticky.js"></script>
+<script src="~/Content/Landing/js/wow.min.js"></script>
+<script src="~/Content/Landing/js/owl.carousel.min.js"></script>
+<script>
+            new WOW().init();
 </script>
-@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
