@@ -32,63 +32,59 @@
     <div class="overlay">
         <div class="container">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-8">
+                    <div class="col-md-6">
+                        <!-- /.logo -->
+                        <div class="logo wow fadeInDown"> <a href=""><img src="~/Content/Landing/images/logo.png" alt="logo"></a></div>
 
-                    <!-- /.logo -->
-                    <div class="logo wow fadeInDown"> <a href=""><img src="~/Content/Landing/images/logo.png" alt="logo"></a></div>
+                        <!-- /.main title -->
+                        <h1 class="wow fadeInLeft">
+                            Login
+                        </h1>
 
-                    <!-- /.main title -->
-                    <h1 class="wow fadeInLeft">
-                        Login Form
-                    </h1>
+                        <!-- /.header paragraph -->
+                        <div class="landing-text wow fadeInUp">
 
-                    <!-- /.header paragraph -->
-                    <div class="landing-text wow fadeInUp">
+                        </div>
 
+                        <!-- /.header button -->
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <div class="head-btn wow fadeInLeft">
+                            <p>Create new account?</p>
+                            <input type="button" class="btn-default" value="Register" onclick="location.href='@Url.Action("Register", "Account")'" />
+
+                        </div>
                     </div>
 
-                    <!-- /.header button -->
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div class="head-btn wow fadeInLeft">
-                        <p>Create new account?</p>
-                        <input type="button" class="btn-default" value="Register" onclick="location.href='@Url.Action("Register", "Account")'" />
-
-                    </div>
+                    <div style="margin-bottom:auto; margin-top:30%" class="col-md-6">
 
 
-
-                </div>
-
-                <div class="col-md-3">
+                        <div style="background-color:white" class="x_panel">
+                            <div class="x_title"><h1></h1></div>
 
 
-                    <div style="background-color:white" class="x_panel">
-                        <div class="x_title"><h1></h1></div>
+                            <hr />
 
-
-                        <hr />
-
-                        @using (Ajax.BeginForm("Login", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
+                            @using (Ajax.BeginForm("Login", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
             {
-                            @Html.AntiForgeryToken()
+                                @Html.AntiForgeryToken()
 
-                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
                                     <!-- start form for validation -->
 
-                            
-                          
-                            <div class="form-group has-feedback">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control has-feedback-left", @placeholder = "Email", @required = "" })
-                                <span class="fa fa-envelope form-control-feedback left"></span>
-                            </div>
+
+
+                                <div class="form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control has-feedback-left", @placeholder = "Email", @required = "" })
+                                    <span class="fa fa-envelope form-control-feedback left"></span>
+                                </div>
                                 <div class="form-group has-feedback">
                                     @Html.TextBoxFor(m => m.Password, new { @class = "form-control has-feedback-left", @placeholder = "Password", @required = "" })
                                     <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
                                 </div>
-                             
 
 
                                 <center>
@@ -96,14 +92,18 @@
                                         <input type="submit" class="btn btn-success" value="Login" />
                                     </div>
                                 </center>
-                                <hr />
 
-                        }
+                                <hr />
+                            }
+
+                        </div>
+
 
                     </div>
 
-
                 </div>
+
+               
 
 
 
