@@ -29,7 +29,7 @@ namespace WWBG.Models
         public string Class { get; set; }
 
         [Required]
-        [Display(Name = "Sex")]
+        [Display(Name = "Gender")]
         public string Sex { get; set; }
 
         [Required]

@@ -1,4 +1,4 @@
-﻿
+﻿@model WWBG.Models.ProfileModels
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -28,7 +28,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Form Design <small>different form elements</small></h2>
+                        <h2>Profile Settings <small>different form elements</small></h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
                                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -44,15 +44,45 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            @*<li>
                                 <a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
+                            </li>*@
                         </ul>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
                         <br />
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                       @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal form-label-left", role = "form" }))
+                        {
+                      @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    <!-- start form for validation -->
+
+                    <div class="form-group">
+                    @Html.LabelFor(m => m.AcademicLevel, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                    @Html.TextBoxFor(m => m.AcademicLevel, new { @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+
+                    <div class="form-group">
+                     @Html.LabelFor(m => m.Faculty, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                     @Html.TextBoxFor(m=> m.Faculty, new { @class = "form-control col-md-7 col-xs-12" })
+                     </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Class, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                        @Html.TextBoxFor(m => m.Class, new { @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Country, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                        @Html.TextBoxFor(m => m.Country, new { @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Gender, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                        @Html.TextBoxFor(m => m.Gender, new { @class = "form-control col-md-7 col-xs-12" })
+                    </div>
+
+                       }
+
+                       
 
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
