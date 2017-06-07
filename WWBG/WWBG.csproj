@@ -198,6 +198,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProfileModels.cs" />
     <Compile Include="Models\UserInfoModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -213,6 +214,8 @@
     <Content Include="Content\Landing\images\img4.JPG" />
     <Content Include="Content\Landing\images\img5.JPG" />
     <Content Include="Content\Landing\images\img6.JPG" />
+    <Content Include="Content\NewCSS1\js\custom.js" />
+    <Content Include="Content\NewCSS1\js\custom.min.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -326,7 +329,6 @@
     <Folder Include="Content\Landing\js\" />
     <Folder Include="Content\NewCSS1\css\" />
     <Folder Include="Content\NewCSS1\images\" />
-    <Folder Include="Content\NewCSS1\js\" />
     <Folder Include="vendors\" />
   </ItemGroup>
   <ItemGroup>

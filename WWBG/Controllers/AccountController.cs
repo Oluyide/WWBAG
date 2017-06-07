@@ -93,7 +93,7 @@ namespace WWBG.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Profile", "Profile");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -234,7 +234,7 @@ namespace WWBG.Controllers
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("profile", "Profile");
                 }
                 AddErrors(result);
             }
