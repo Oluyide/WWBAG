@@ -29,8 +29,8 @@ namespace WWBG.Models
         public string Class { get; set; }
 
         [Required]
-        [Display(Name = "Sex")]
-        public string Sex { get; set; }
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
 
         [Required]
         [Display(Name = "Date of birth ")]
