@@ -1,79 +1,130 @@
-﻿@using WWBG.Models
-@model LoginViewModel
-
+﻿@model WWBG.Models.LoginViewModel
 @{
     ViewBag.Title = "Log in";
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!DOCTYPE html>
 
-    
+        <!-- /.website title -->
 
-    <!-- Bootstrap -->
-    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="~/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Custom Theme Style -->
-    <link href="~/Content/NewCSS1/css/custom.min.css" rel="stylesheet">
+        <!-- CSS Files -->
+    <link href="~/Content/Landing/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Landing/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Landing/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="~/Content/Landing/css/animate.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Landing/css/owl.theme.css" rel="stylesheet">
+    <link href="~/Content/Landing/css/owl.carousel.css" rel="stylesheet">
+
+        <!-- Colors -->
+    <link href="~/Content/Landing/css/css-index.css" rel="stylesheet" media="screen">
+        <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
+        <!-- <link href="css/css-index-yellow.css" rel="stylesheet" media="screen"> -->
+        <!-- Google Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
+
+
 }
-<div >
-    <div class="login_wrapper">
-        <div class="animate form login_form">
-            <section class="login_content">
-               
-                    <h1>Login</h1>
-                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
+<div class="fullscreen landing parallax" style="background-image:url('/Content/login1.JPG'); height:auto" data-img-width="2000" data-img-height="1333" data-diff="100">
 
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group has-feedback">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control has-feedback-left", @placeholder = "Username", @required = "" })
-                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-</div>
-                        <div class="form-group has-feedback">
-                            
-                            @Html.PasswordFor(m => m.Password, new { @class = " form-control has-feedback-left", @placeholder = "Password", @required = "" })
-                            <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                        <div>
-                            <input type="submit" value="Log in" class="btn btn-default submit" />
-                            <a class="reset_pass"> @Html.ActionLink("Lost your password?", "ForgotPassword")</a>
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
 
-                        </div>
-                    }
-                    <div class="clearfix"></div>
+                    <!-- /.logo -->
+                    <div class="logo wow fadeInDown"> <a href=""><img src="~/Content/Landing/images/logo.png" alt="logo"></a></div>
 
-                    <div class="separator">
-                        <p class="change_link">
-                            New to site?
-                            <a href="#signup" class="to_register"> Create Account </a>
-                        </p>
+                    <!-- /.main title -->
+                    <h1 class="wow fadeInLeft">
+                        Login Form
+                    </h1>
 
-                        <div class="clearfix"></div>
-                        <br />
+                    <!-- /.header paragraph -->
+                    <div class="landing-text wow fadeInUp">
 
-                        <div>
-                            <h1><i class="fa fa-bars"></i> WWTBAG <i class="fa fa-certificate"></i><i class="fa fa-check"></i></h1>
-                            <p>© @DateTime.Today.Year All Rights Reserved.</p>
-                        </div>
                     </div>
-               
-            </section>
+
+                    <!-- /.header button -->
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="head-btn wow fadeInLeft">
+                        <p>Create new account?</p>
+                        <input type="button" class="btn-default" value="Register" onclick="location.href='@Url.Action("Register", "Account")'" />
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-md-3">
+
+
+                    <div style="background-color:white" class="x_panel">
+                        <div class="x_title"><h1></h1></div>
+
+
+                        <hr />
+
+                        @using (Ajax.BeginForm("Login", "Account", new AjaxOptions { LoadingElementId = "loader", OnSuccess = "onSuccess" }, new { @class = "form-horizontal", role = "form" }))
+            {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    <!-- start form for validation -->
+
+                            
+                          
+                            <div class="form-group has-feedback">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control has-feedback-left", @placeholder = "Email", @required = "" })
+                                <span class="fa fa-envelope form-control-feedback left"></span>
+                            </div>
+                                <div class="form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control has-feedback-left", @placeholder = "Password", @required = "" })
+                                    <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                             
+
+
+                                <center>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success" value="Login" />
+                                    </div>
+                                </center>
+                                <hr />
+
+                        }
+
+                    </div>
+
+
+                </div>
+
+
+
+             
+            </div>
         </div>
     </div>
 </div>
-           
 
-                @section Scripts {
-                    @Scripts.Render("~/bundles/jqueryval")
-                }
+<!-- /.javascript files -->
+<script src="~/Content/Landing/js/jquery.js"></script>
+<script src="~/Content/Landing/js/bootstrap.min.js"></script>
+<script src="~/Content/Landing/js/custom.js"></script>
+<script src="~/Content/Landing/js/jquery.sticky.js"></script>
+<script src="~/Content/Landing/js/wow.min.js"></script>
+<script src="~/Content/Landing/js/owl.carousel.min.js"></script>
+<script>
+            new WOW().init();
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
