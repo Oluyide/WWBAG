@@ -55,11 +55,12 @@
                         <div class="head-btn wow fadeInLeft">
                             <p>Create new account?</p>
                             <input type="button" class="btn-default" value="Register" onclick="location.href='@Url.Action("Register", "Account")'" />
-
+                            <input type="button" class="btn-default" value="Go back" onclick="location.href='@Url.Action("Index", "Home")'" />
                         </div>
+
                     </div>
 
-                    <div style="margin-bottom:auto; margin-top:30%" class="col-md-6">
+                    <div style="margin-bottom:auto; margin-top:30%" class="col-md-5">
 
 
                         <div style="background-color:white" class="x_panel">
@@ -82,7 +83,7 @@
                                     <span class="fa fa-envelope form-control-feedback left"></span>
                                 </div>
                                 <div class="form-group has-feedback">
-                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control has-feedback-left", @placeholder = "Password", @required = "" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control has-feedback-left", @placeholder = "Password", @required = "", @password = "" })
                                     <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
                                 </div>
 

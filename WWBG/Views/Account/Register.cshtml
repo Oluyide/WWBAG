@@ -56,6 +56,7 @@
                         <div class="head-btn wow fadeInLeft">
                             <p>Already have an account?</p>
                             <input type="button" class="btn-default" value="Login" onclick="location.href='@Url.Action("Login", "Account")'" />
+                            <input type="button" class="btn-default" value="Go back" onclick="location.href='@Url.Action("Index", "Home")'" />
 
                         </div>
 
@@ -88,20 +89,13 @@
                                     <span class="fa fa-user form-control-feedback left"></span>
                                 </div>
 
+                             
                                 <div class="form-group has-feedback">
-                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control has-feedback-left", @placeholder = "Phone number", @required = "" })
-                                    <span class="fa fa-phone form-control-feedback left "></span>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control has-feedback-left", @placeholder = "Email", @required = "" })
-                                    <span class="fa fa-envelope form-control-feedback left"></span>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control has-feedback-left", @placeholder = "Password", @required = "" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control has-feedback-left", @placeholder = "Password", @required = "", @password = "" })
                                     <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                                 <div style="margin-bottom:4%" class="form-group has-feedback">
-                                    @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control has-feedback-left", @placeholder = "Confirm Password", @required = "" })
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control has-feedback-left", @placeholder = "Confirm Password", @required = "",@password="" })
                                     <span class="fa fa-lock form-control-feedback left"></span>
                                 </div>
 

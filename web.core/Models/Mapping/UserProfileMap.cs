@@ -55,6 +55,7 @@ namespace web.core.Models.Mapping
             this.Property(t => t.Picture).HasColumnName("Picture");
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.UserinfoId).HasColumnName("UserinfoId");
+            this.Property(t => t.Date).HasColumnName("Date");
 
             // Relationships
             this.HasOptional(t => t.UserInfo)

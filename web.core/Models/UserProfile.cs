@@ -17,6 +17,7 @@ namespace web.core.Models
         public string Picture { get; set; }
         public string UserId { get; set; }
         public Nullable<int> UserinfoId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public virtual UserInfo UserInfo { get; set; }
     }
 }

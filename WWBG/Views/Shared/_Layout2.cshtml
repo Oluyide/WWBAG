@@ -81,7 +81,7 @@
                     <div class="vd_top-nav vd_nav-width  ">
                         <div class="vd_panel-header">
                             <div class="logo">
-                                <a href="index-2.html"><img alt="logo" src="~/Content/Profile/img/logo.png"></a>
+                                <a href="index-2.html"><img alt="logo" src="~/Content/Landing/images/logo.png"></a>
                             </div>
                             <!-- logo -->
                             <div class="vd_panel-menu  hidden-sm hidden-xs" data-intro="<strong>Minimize Left Navigation</strong><br/>Toggle navigation size to medium or small size. You can set both button or one button only. See full option at documentation." data-step=1>
@@ -121,7 +121,7 @@
                         <div class="row">
                             <div class="col-sm-5 col-xs-12">
 
-                                <div class="vd_menu-search">
+                                @*<div class="vd_menu-search">
                                     <form id="search-box" method="post" action="#">
                                         <input type="text" name="search" class="vd_menu-search-text width-60" placeholder="Search">
                                         <div class="vd_menu-search-category">
@@ -173,13 +173,13 @@
                                         </div>
                                         <span class="vd_menu-search-submit"><i class="fa fa-search"></i> </span>
                                     </form>
-                                </div>
+                                </div>*@
                             </div>
                             <div class="col-sm-7 col-xs-12">
                                 <div class="vd_mega-menu-wrapper">
                                     <div class="vd_mega-menu pull-right">
                                         <ul class="mega-ul">
-                                            <li id="top-menu-1" class="one-icon mega-li">
+                                            @*<li id="top-menu-1" class="one-icon mega-li">
                                                 <a href="index-2.html" class="mega-link" data-action="click-trigger">
                                                     <span class="mega-icon"><i class="fa fa-users"></i></span>
                                                     <span class="badge vd_bg-red">1</span>
@@ -604,7 +604,7 @@
                                                         </div>
                                                     </div> <!-- child-menu -->
                                                 </div>   <!-- vd_mega-menu-content -->
-                                            </li>
+                                            </li>*@
 
                                             <li id="top-menu-profile" class="profile mega-li">
                                                 <a href="#" class="mega-link" data-action="click-trigger">
@@ -612,7 +612,7 @@
                                                         <img src="~/Content/Profile/img/avatar/avatar.jpg" alt="example image" />
                                                     </span>
                                                     <span class="mega-name">
-                                                        Caroline <i class="fa fa-caret-down fa-fw"></i>
+                                                         @ViewBag.info.FirstName <i class="fa fa-caret-down fa-fw"></i>
                                                     </span>
                                                 </a>
                                                 <div class="vd_mega-menu-content  width-xs-2  left-xs left-sm" data-action="click-target">
@@ -654,7 +654,7 @@
 
                                             </li>
 
-                                            <li id="top-menu-settings" class="one-big-icon hidden-xs hidden-sm mega-li" data-intro="<strong>Toggle Right Navigation </strong><br/>On smaller device such as tablet or phone you can click on the middle content to close the right or left navigation." data-step=2 data-position="left">
+                                            @*<li id="top-menu-settings" class="one-big-icon hidden-xs hidden-sm mega-li" data-intro="<strong>Toggle Right Navigation </strong><br/>On smaller device such as tablet or phone you can click on the middle content to close the right or left navigation." data-step=2 data-position="left">
                                                 <a href="#" class="mega-link" data-action="toggle-navbar-right">
                                                     <span class="mega-icon">
                                                         <i class="fa fa-comments"></i>
@@ -665,7 +665,7 @@
                                                     <span class="badge vd_bg-red">8</span>
                                                 </a>
 
-                                            </li>
+                                            </li>*@
                                         </ul>
                                         <!-- Head menu search form ends -->
                                     </div>
@@ -683,7 +683,7 @@
         <!-- Header Ends -->
         <div class="content">
             <div class="container">
-                <div class="vd_navbar vd_nav-width vd_navbar-tabs-menu vd_navbar-left  ">
+                <div style="background-color:#31708f" class="vd_navbar vd_nav-width vd_navbar-tabs-menu vd_navbar-left  ">
                     <div class="navbar-tabs-menu clearfix">
                         <span class="expand-menu" data-action="expand-navbar-tabs-menu">
                             <span class="menu-icon menu-icon-left">
@@ -703,7 +703,7 @@
                             <div class="vd_mega-menu-wrapper">
                                 <div class="vd_mega-menu" data-intro="<strong>Tabs Menu</strong><br/>Can be placed for dropdown menu, tabs, or user profile. Responsive for medium and small size navigation." data-step=3>
                                     <ul class="mega-ul">
-                                        <li id="home" class="one-icon mega-li">
+                                        @*<li id="home" class="one-icon mega-li">
                                             <a class="mega-link  vd_bg-blue" href="javascript:void(0);" data-action="click-trigger">
                                                 <span class="mega-icon">
                                                     <i class="fa fa-cloud"></i>
@@ -1127,7 +1127,7 @@
                                                     </div>
                                                 </div>
                                             </div>   <!-- vd_mega-menu-content  -->
-                                        </li>
+                                        </li>*@
                                     </ul>
                                 </div>
                             </div>
@@ -1785,7 +1785,7 @@
                     </div>
                     <div class="navbar-spacing clearfix">
                     </div>
-                    <div class="vd_menu vd_navbar-bottom-widget">
+                    <div style="background-color:red" class="vd_menu vd_navbar-bottom-widget">
                         <ul>
                             <li>
                                 <a href="pages-logout.html">
@@ -1796,7 +1796,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>    <div class="vd_navbar vd_nav-width vd_navbar-chat vd_bg-black-80 vd_navbar-right   ">
+                </div>    @*<div class="vd_navbar vd_nav-width vd_navbar-chat vd_bg-black-80 vd_navbar-right   ">
                     <div class="navbar-tabs-menu clearfix">
                         <span class="expand-menu" data-action="expand-navbar-tabs-menu">
                             <span class="menu-icon menu-icon-left">
@@ -1941,7 +1941,7 @@
                     </div>
                     <div class="navbar-spacing clearfix">
                     </div>
-                </div>
+                </div>*@
 
 
                 @RenderSection("featured", required: false)
