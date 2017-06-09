@@ -22,8 +22,8 @@ namespace WWBG.Controllers
             var list = ListProfile();
             var list2 = ListUserInfo();
             model.ProfileList = list;
-            model.userInfo = list2;
-           
+            model.userInfoList = list2;
+            ViewBag.profile = list.Single();
             ViewBag.info = list2.Single();
             return View(model);
         }
@@ -31,9 +31,15 @@ namespace WWBG.Controllers
 
         [HttpPost]
 
-        public ActionResult Profile(ProfileModels model)
+        public ActionResult Profile(ProfileModels model, HttpPostedFileBase uploadedPassport)
         {
-         
+            var validImageTypes = new string[]
+               {
+            "image/gif",
+            "image/jpeg",
+            "image/pjpeg",
+            "image/png",
+                };
             if (ModelState.IsValid)
             {
                 SqlRepository<UserProfile> repo = new SqlRepository<UserProfile>();
@@ -47,17 +53,39 @@ namespace WWBG.Controllers
                 profile.Faculty = model.Faculty;
                 profile.Id = model.Id;
                 profile.PhoneNumber = model.PhoneNumber;
-                profile.Picture = model.Picture;
+                //profile.Picture = model.Picture;
+                profile.UserId = User.Identity.GetUserId();
+                profile.Date = DateTime.Today;
                 profile.Sex = model.Sex;
                 profile.State = model.State;
-            
+                if (uploadedPassport != null)
+                {
+                    if (!validImageTypes.Contains(uploadedPassport.ContentType))
+                    {
+                        ModelState.AddModelError("", "Please choose either a GIF, JPG or PNG image.");
+                        TempData["Picture"] = "You need to upload either a GIF, JPG, or PNG image.";
+                        return RedirectToAction("Edit");
+
+                    }
+                    else
+                    {
+                        string filename = System.IO.Path.GetFileName(uploadedPassport.FileName);
+                        string filename1 = User.Identity.Name.ToString() +"_"+ filename;
+                        string physicalPath = Server.MapPath("~/Images/ProfilePic/" + filename1);
+                        uploadedPassport.SaveAs(physicalPath);
+
+                        profile.Picture = filename1;
+
+                    }
+
+                }
 
                 repo.Add(profile);
 
                 try
                 {
                     repo.SaveChanges();
-                    TempData["Success"] = "Saved!";
+                    TempData["Success"] = "Profile updated!";
 
                 }
                 catch (DbEntityValidationException dbEx)
@@ -94,8 +122,8 @@ namespace WWBG.Controllers
 
 
             List<ProfileModels> listProfile = new List<ProfileModels>();
-
-            List<UserProfile> ProfileList = repo.GetAll().OrderBy(x=>x.Id).ToList();
+            string userid = User.Identity.GetUserId();
+            List<UserProfile> ProfileList = repo.GetAll().Where(x => x.UserId == userid).OrderBy(x => x.Id).ToList();
 
             foreach (var a in ProfileList)
             {
@@ -111,7 +139,7 @@ namespace WWBG.Controllers
                 model.Sex = a.Sex;
                 model.State = a.State;
 
-                              
+
                 listProfile.Add(model);
 
             }
