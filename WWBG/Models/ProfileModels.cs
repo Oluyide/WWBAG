@@ -21,7 +21,8 @@ namespace WWBG.Models
         public string Email { get; set; }
         public string Picture { get; set; }
         public string UserId { get; set; }
-      //  public Nullable<int> UserinfoId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        //  public Nullable<int> UserinfoId { get; set; }
         public virtual UserInfo UserInfo { get; set; }
         public List<UserInfoModels> userInfoList { get; set; }
 

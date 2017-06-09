@@ -55,9 +55,12 @@
                                         <div class="col-sm-3 mgbt-xs-20">
                                             <div class="form-group">
                                                 <div class="col-xs-12">
-                                                    @if (ViewBag.profile.Picture != null)
-                                                    {<div class="form-img text-center mgbt-xs-15"> <img id="myImg1" alt="example image" src="~/Images/ProfilePic/@ViewBag.profile.Picture"> </div> }
-                                                    else {
+                                                    @if (ViewBag.profile != null)
+                                                    {
+                                                        <div class="form-img text-center mgbt-xs-15"> <img id="myImg1" alt="example image" src="~/Images/ProfilePic/@ViewBag.profile.Picture"> </div>
+                                                    }
+                                                    else
+                                                    {
                                                     <div class="form-img text-center mgbt-xs-15"> <img id="myImg1" alt="example image" src="~/Content/Profile/img/avatar/big.jpg"> </div>
                                                     }
                                                     @*<div class="form-img-action text-center mgbt-xs-20"> <a class="btn vd_btn  vd_bg-blue" href="javascript:void(0);"><i class="fa fa-cloud-upload append-icon"></i> Upload</a> </div>*@
@@ -67,7 +70,14 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td style="width:60%;">Status</td>
-                                                                    <td><span class="label label-success">Active</span></td>
+                                                                    <td>
+
+                                                                    @if (ViewBag.profile != null)
+                                                                    { <span class="label label-success">
+                                                                  Active </span>
+                                                                    }
+                                                                    else
+                                                                    {<span class="label label-danger">Not yet Active </span>}</td>
                                                                 </tr>
                                                                 @*<tr>
                                                 <td>User Rating</td>
@@ -78,8 +88,15 @@
                                                                     <td> @ViewBag.info.Date</td>
                                                                 </tr>
                                                                 <tr>
+                                                                    @if (ViewBag.profile != null)
+                                                                    {
                                                                     <td>Active Since</td>
-                                                                    <td> xx/xx/xxxx </td>
+                                                                    <td>@ViewBag.profile.Date</td> }
+                                                                    else
+                                                                    { 
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    }
                                                                 </tr>
                                                             </tbody>
                                                         </table>

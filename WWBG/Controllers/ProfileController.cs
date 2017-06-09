@@ -23,8 +23,8 @@ namespace WWBG.Controllers
             var list2 = ListUserInfo();
             model.ProfileList = list;
             model.userInfoList = list2;
-            ViewBag.profile = list.Single();
-            ViewBag.info = list2.Single();
+            ViewBag.profile = list.SingleOrDefault();
+            ViewBag.info = list2.SingleOrDefault();
             return View(model);
         }
 
@@ -53,7 +53,7 @@ namespace WWBG.Controllers
                 profile.Faculty = model.Faculty;
                 profile.Id = model.Id;
                 profile.PhoneNumber = model.PhoneNumber;
-                //profile.Picture = model.Picture;
+               
                 profile.UserId = User.Identity.GetUserId();
                 profile.Date = DateTime.Today;
                 profile.Sex = model.Sex;
@@ -138,6 +138,7 @@ namespace WWBG.Controllers
                 model.Picture = a.Picture;
                 model.Sex = a.Sex;
                 model.State = a.State;
+                model.Date = a.Date;
 
 
                 listProfile.Add(model);
