@@ -338,6 +338,7 @@
     <Folder Include="Content\Profile\img\" />
     <Folder Include="Content\Profile\js\" />
     <Folder Include="Content\Profile\plugins\" />
+    <Folder Include="Images\ProfilePic\" />
     <Folder Include="vendors\" />
   </ItemGroup>
   <ItemGroup>

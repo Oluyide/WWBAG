@@ -3,38 +3,28 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using web.core.Models;
 
 namespace WWBG.Models
 {
     public class ProfileModels
     {
-        [Required]
-        [Display(Name = "Country")]
+        public List<ProfileModels> ProfileList { get; set; }
+        public int Id { get; set; }
         public string Country { get; set; }
-
-        [Required]
-        [Display(Name = "State")]
         public string State { get; set; }
-
-        [Required]
-        [Display(Name = "Academic Level")]
-        public string AcademicLevel { get; set; }
-
-        [Required]
-        [Display(Name = "Faculty")]
+        public string Academic { get; set; }
         public string Faculty { get; set; }
-
-        [Required]
-        [Display(Name = "Class")]
-        public string Class { get; set; }
-
-        [Required]
-        [Display(Name = "Gender")]
-        public string Gender { get; set; }
-
-        [Required]
-        [Display(Name = "Date of birth ")]
-        public DateTime DateBirth { get; set; }
+        public string Sex { get; set; }
+        public string DateBirth { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Picture { get; set; }
+        public string UserId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        //  public Nullable<int> UserinfoId { get; set; }
+        public virtual UserInfo UserInfo { get; set; }
+        public List<UserInfoModels> userInfoList { get; set; }
 
     }
 }

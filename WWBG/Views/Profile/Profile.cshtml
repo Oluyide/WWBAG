@@ -1,34 +1,44 @@
-﻿
+﻿@model WWBG.Models.ProfileModels
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
  <!-- Middle Content Start -->
-<div></div>
+
 <div class="vd_content-wrapper">
     <div class="vd_container">
         <div class="vd_content clearfix">
             <div class="vd_head-section clearfix">
                 <div class="vd_panel-header">
                     <ul class="breadcrumb">
-                        <li><a href="index-2.html">Home</a> </li>
-                        <li><a href="pages-custom-product.html">Pages</a> </li>
+                        <li><a href='@Url.Action("Index", "Home")'>Home</a> </li>
+                        @*<li><a href="pages-custom-product.html">Pages</a> </li>*@
                         <li class="active">User Profile Form</li>
                     </ul>
+                    <div style="align-self:center; width:25%">
+                        @if (TempData["Success"] != null)
+                        {
+                            <div style="color:green; font-size:20px" class="alert alert-success">
+                                @TempData["Success"].ToString()
+                                @*<a href="#" class="close">&times;</a>*@
+                            </div>
+
+
+                        }
+                    </div>
+
                     <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5 data-position="left">
                         <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
                         <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
                         <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
-
                     </div>
-
                 </div>
             </div>
             <div class="vd_title-section clearfix">
                 <div class="vd_panel-header">
                     <h1>User Profile Form</h1>
-                    <small class="subtitle">Form for user profile</small>
+                    <small class="subtitle">Form for @ViewBag.info.FirstName profile</small>
                 </div>
             </div>
             <div class="vd_content-section clearfix">
@@ -36,31 +46,57 @@
                     <div class="col-sm-12">
                         <div class="panel widget light-widget">
                             <div class="panel-heading no-title"> </div>
-                            <form class="form-horizontal" action="#" role="form">
+                            
                                 <div class="panel-body">
-                                    <h2 class="mgbt-xs-20"> Profile: <span class="font-semibold">Mariah Carayban</span> </h2>
+
+                                    <h2 class="mgbt-xs-20"> Profile: <span class="font-semibold">@ViewBag.info.LastName  @ViewBag.info.FirstName</span> </h2>
                                     <br />
                                     <div class="row">
                                         <div class="col-sm-3 mgbt-xs-20">
                                             <div class="form-group">
                                                 <div class="col-xs-12">
-                                                    <div class="form-img text-center mgbt-xs-15"> <img alt="example image" src="~/Content/Profile/img/avatar/big.jpg"> </div>
-                                                    <div class="form-img-action text-center mgbt-xs-20"> <a class="btn vd_btn  vd_bg-blue" href="javascript:void(0);"><i class="fa fa-cloud-upload append-icon"></i> Upload</a> </div>
+                                                    @if (ViewBag.profile != null)
+                                                    {
+                                                        <div class="form-img text-center mgbt-xs-15"> <img id="myImg1" alt="example image" src="~/Images/ProfilePic/@ViewBag.profile.Picture"> </div>
+                                                    }
+                                                    else
+                                                    {
+                                                    <div class="form-img text-center mgbt-xs-15"> <img id="myImg1" alt="example image" src="~/Content/Profile/img/avatar/big.jpg"> </div>
+                                                    }
+                                                    @*<div class="form-img-action text-center mgbt-xs-20"> <a class="btn vd_btn  vd_bg-blue" href="javascript:void(0);"><i class="fa fa-cloud-upload append-icon"></i> Upload</a> </div>*@
                                                     <br />
                                                     <div>
                                                         <table class="table table-striped table-hover">
                                                             <tbody>
                                                                 <tr>
                                                                     <td style="width:60%;">Status</td>
-                                                                    <td><span class="label label-success">Active</span></td>
+                                                                    <td>
+
+                                                                    @if (ViewBag.profile != null)
+                                                                    { <span class="label label-success">
+                                                                  Active </span>
+                                                                    }
+                                                                    else
+                                                                    {<span class="label label-danger">Not yet Active </span>}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>User Rating</td>
-                                                                    <td><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i></td>
-                                                                </tr>
+                                                                @*<tr>
+                                                <td>User Rating</td>
+                                                <td><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i><i class="fa fa-star vd_yellow fa-fw"></i></td>
+                                            </tr>*@
                                                                 <tr>
                                                                     <td>Member Since</td>
-                                                                    <td> Jan 07, 2014 </td>
+                                                                    <td> @ViewBag.info.Date</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    @if (ViewBag.profile != null)
+                                                                    {
+                                                                    <td>Active Since</td>
+                                                                    <td>@ViewBag.profile.Date</td> }
+                                                                    else
+                                                                    { 
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    }
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -69,410 +105,388 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-9">
-                                            <h3 class="mgbt-xs-15">Account Setting</h3>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Email</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="email" placeholder="email@yourcompany.com">
-                                                        </div>
-                                                        <!-- col-xs-12 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon  dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
+                                            @*<h3 class="mgbt-xs-15">Account Setting</h3>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-9">
+                                        <input type="email" placeholder="email@yourcompany.com">
+                                    </div>
+                                    <!-- col-xs-12 -->
+                                    <div class="col-xs-2">
+                                        <div class="btn-action">
+                                            <button data-toggle="dropdown" class="btn btn-icon  dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- btn-action col-sm-10 -->
+                                    </div>
+                                </div>
+                                <!-- row -->
+                            </div>
+                            <!-- col-sm-10 -->
+                        </div>
+                        <!-- form-group -->
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Username</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" placeholder="username">
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Username</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-9">
+                                        <input type="text" placeholder="username">
+                                    </div>
+                                    <!-- col-xs-9 -->
+                                    <div class="col-xs-2">
+                                        <div class="btn-action">
+                                            <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- btn-action col-sm-10 -->
 
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
+                                    </div>
+                                </div>
+                                <!-- row -->
+                            </div>
+                            <!-- col-sm-10 -->
+                        </div>
+                        <!-- form-group -->
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Password</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="password" class="width-40" placeholder="password">
-                                                        </div>
-                                                        <!-- col-xs-12 -->
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-9">
+                                        <input type="password" class="width-40" placeholder="password">
+                                    </div>
+                                    <!-- col-xs-12 -->
+                                </div>
+                                <!-- row -->
+                            </div>
+                            <!-- col-sm-10 -->
+                        </div>
+                        <!-- form-group -->
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Confirm Password</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="password" class="width-40" placeholder="password">
-                                                        </div>
-                                                        <!-- col-xs-12 -->
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
-
-                                            <hr />
-                                            <h3 class="mgbt-xs-15">Profile Setting</h3>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">First Name</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" placeholder="first name">
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Last Name</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" placeholder="last name">
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-lock fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Gender</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <span class="vd_radio radio-info">
-                                                                <input type="radio" checked="" value="option3" id="optionsRadios3" name="optionsRadios2">
-                                                                <label for="optionsRadios3"> Male </label>
-                                                            </span>
-                                                            <span class="vd_radio  radio-danger">
-
-                                                                <input type="radio" value="option4" id="optionsRadios4" name="optionsRadios2">
-                                                                <label for="optionsRadios4"> Female </label>
-                                                            </span>
-
-
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-lock fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Birthday</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" id="datepicker-normal" class="width-40" />
-                                                        </div>
-                                                        <!-- col-xs-12 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-user fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Marital Status</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <select class="width-40">
-                                                                <option>Single</option>
-                                                                <option>Married</option>
-                                                            </select>
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-user fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Position</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <select class="width-40">
-                                                                <option>CEO</option>
-                                                                <option>Director</option>
-                                                                <option>Manager</option>
-                                                                <option>Staff</option>
-                                                                <option>Office Boy</option>
-                                                            </select>
-                                                        </div>
-                                                        <!-- col-xs-12 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-user fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">About</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <textarea rows="3"></textarea>
-                                                        </div>
-                                                        <!-- col-xs-12 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-user fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
-                                            <!-- form-group -->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Confirm Password</label>
+                            <div class="col-sm-9 controls">
+                                <div class="row mgbt-xs-0">
+                                    <div class="col-xs-9">
+                                        <input type="password" class="width-40" placeholder="password">
+                                    </div>
+                                    <!-- col-xs-12 -->
+                                </div>
+                                <!-- row -->
+                            </div>
+                            <!-- col-sm-10 -->
+                        </div>
+                        <!-- form-group -->*@
 
                                             <hr />
-                                            <h3 class="mgbt-xs-15">Contact Setting</h3>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Mobile Phone</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" placeholder="mobile phone">
-                                                        </div>
-                                                        <!-- col-xs-12 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
+          
+@using (Html.BeginForm("Profile", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+
+{
+                                              
+                                                <h3 class="mgbt-xs-15">Profile Setting</h3>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Country</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.Country, new { @class = "form-control ", @required = "", @placeholder = "Country" })
+                                                                @*<input type="text" placeholder="Country">*@
                                                             </div>
-                                                            <!-- btn-action col-sm-10 -->
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
                                                         </div>
+                                                        <!-- row -->
                                                     </div>
-                                                    <!-- row -->
+                                                    <!-- col-sm-10 -->
                                                 </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">State</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.State, new { @class = "form-control ", @required = "", @placeholder = "State" })
+                                                                @*<input type="text" placeholder="Country">*@
+                                                            </div>
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- row -->
+                                                    </div>
+                                                    <!-- col-sm-10 -->
+                                                </div>
                                             <!-- form-group -->
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Website</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" placeholder="website">
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Academic</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.Academic, new
+                                                       {
+                                                           @class = "form-control ",
+                                                           @required = "",
+                                                           @placeholder = "Academic Level"
+                                                       })
+                                                                @*<input type="text" placeholder="Academic Level">*@
                                                             </div>
-                                                            <!-- btn-action col-sm-10 -->
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-lock fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
                                                         </div>
+                                                        <!-- row -->
                                                     </div>
-                                                    <!-- row -->
+                                                    <!-- col-sm-10 -->
                                                 </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
+                                            <!-- form-group -->
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Faculty</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control ", @required = "", @placeholder = "Faculty" })
+                                                                @*<input type="text" placeholder="Country">*@
+                                                            </div>
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- row -->
+                                                    </div>
+                                                    <!-- col-sm-10 -->
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Gender</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @*<span class="vd_radio radio-info">
+                                                                    <input type="radio" checked="" value="option3" id="optionsRadios3" name="optionsRadios2">
+                                                                    <label for="optionsRadios3"> Male </label>
+                                                                </span>
+                                                                <span class="vd_radio  radio-danger">
+
+                                                                    <input type="radio" value="option4" id="optionsRadios4" name="optionsRadios2">
+                                                                    <label for="optionsRadios4"> Female </label>
+                                                                </span>*@
+                                                                @Html.TextBoxFor(m => m.Sex, new { @class = "form-control ", @required = "", @placeholder = "Sex" })
+
+
+                                                            </div>
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-lock fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- row -->
+                                                    </div>
+                                                    <!-- col-sm-10 -->
+                                                </div>
                                             <!-- form-group -->
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Facebook</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" placeholder="facebook">
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Birthday</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.DateBirth, new { @class = "form-control width-40 ", @required = "", @placeholder = "Date of Birth", @id = "datepicker-normal" })
+                                                                @*<input type="text" id="datepicker-normal" class="width-40" />*@
                                                             </div>
-                                                            <!-- btn-action col-sm-10 -->
+                                                            <!-- col-xs-12 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-user fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
                                                         </div>
+                                                        <!-- row -->
                                                     </div>
-                                                    <!-- row -->
+                                                    <!-- col-sm-10 -->
                                                 </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Picture</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                <input class="btn btn-primary" style="width:100%;" type="file" name="uploadedPassport" />
+                                                                @*<input type="text" placeholder="Country">*@
+                                                            </div>
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- row -->
+                                                    </div>
+                                                    <!-- col-sm-10 -->
+                                                </div>
+
+                                                @*<div class="form-input ; col-md-12">
+                                <span style=" color:red">
+                                    Upload File(s)
+                                </span>
+                                <input class="btn btn-primary" style="width:100%;" type="file" name="uploadedFile" />
+                            </div>*@
+
                                             <!-- form-group -->
 
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Twitter</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row mgbt-xs-0">
-                                                        <div class="col-xs-9">
-                                                            <input type="text" placeholder="twitter">
-                                                        </div>
-                                                        <!-- col-xs-9 -->
-                                                        <div class="col-xs-2">
-                                                            <div class="btn-action">
-                                                                <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
-                                                                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
-                                                                    <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <!-- btn-action col-sm-10 -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-10 -->
-                                            </div>
+
                                             <!-- form-group -->
 
+                                                <hr />
+                                                <h3 class="mgbt-xs-15">Contact Setting</h3>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Mobile Phone</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.PhoneNumber, new
+                                                       {
+                                                           @class = "form-control ",
+                                                           @required = "",
+                                                           @placeholder = "Mobile Phone"
+                                                       })
+                                                                @*<input type="text" placeholder="mobile phone">*@
+                                                            </div>
+                                                            <!-- col-xs-12 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- row -->
+                                                    </div>
+                                                    <!-- col-sm-10 -->
+                                                </div>
+                                            <!-- form-group -->
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">Email</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.Email, new
+                                                       {
+                                                           @class = "form-control ",
+                                                           @required = "",
+                                                           @placeholder = "Email"
+                                                       })
+                                                                @*<input type="text" placeholder="website">*@
+                                                            </div>
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- row -->
+                                                    </div>
+                                                    <!-- col-sm-10 -->
+                                                </div>
+                                            <!-- form-group -->
+
+
+                                            <!-- form-group -->
+
+
+                                <!-- panel-body -->
+                                                <div class="pd-20">
+                                                    <button type="submit" class="btn vd_btn vd_bg-green col-md-offset-3"><span class="menu-icon"><i class="fa fa-fw fa-check"></i></span> Finish</button>
+                                                </div>
+                                            }
                                         </div>
                                         <!-- col-sm-12 -->
                                     </div>
                                     <!-- row -->
 
                                 </div>
-                                <!-- panel-body -->
-                                <div class="pd-20">
-                                    <button class="btn vd_btn vd_bg-green col-md-offset-3"><span class="menu-icon"><i class="fa fa-fw fa-check"></i></span> Finish</button>
-                                </div>
-                            </form>
+                            
                         </div>
                         <!-- Panel Widget -->
                     </div>
@@ -501,7 +515,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="copyright">
-                        Copyright &copy;2014 Venmond Inc. All Rights Reserved
+                        Copyright &copy;@DateTime.Today.Year WWTBAG All Rights Reserved
                     </div>
                 </div>
             </div><!-- row -->
@@ -509,7 +523,7 @@
     </div>
 </footer>
 <!-- Footer END -->
-<div class="vd_chat-menu hidden-xs">
+@*<div class="vd_chat-menu hidden-xs">
     <div class="vd_mega-menu-wrapper">
         <div class="vd_mega-menu">
             <ul class="mega-ul">
@@ -783,7 +797,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <div class="menu-icon"><i class=" fa fa-magic"></i></div>
+                                                <div class="menu-icon"><i class="fa fa-magic"></i></div>
                                                 <div class="menu-text">
                                                     Final error check on new templates
                                                     <div class="menu-info">
@@ -798,7 +812,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <div class="menu-icon vd_green"><i class=" fa fa-camera"></i></div>
+                                                <div class="menu-icon vd_green"><i class="fa fa-camera"></i></div>
                                                 <div class="menu-text">
                                                     Update product image
                                                     <div class="menu-info">
@@ -828,7 +842,7 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <div class="menu-icon vd_yellow"><i class=" fa fa-code"></i></div>
+                                                <div class="menu-icon vd_yellow"><i class="fa fa-code"></i></div>
                                                 <div class="menu-text">
                                                     Finish coding jquery plugin
                                                     <div class="menu-info">
@@ -1274,12 +1288,12 @@
             <!-- Head menu search form ends -->
         </div>
     </div>
-</div>
+</div>*@
 
 </div>
 
 <!-- .vd_body END  -->
-<a id="back-top" href="#" data-action="backtop" class="vd_back-top visible"> <i class="fa  fa-angle-up"> </i> </a>
+<a style="background-color:#31708f" id="back-top" href="#" data-action="backtop" class="vd_back-top visible"> <i class="fa  fa-angle-up"> </i> </a>
 
 <!--
 <a class="back-top" href="#" id="back-top"> <i class="icon-chevron-up icon-white"> </i> </a> -->
@@ -1354,6 +1368,7 @@ $(window).load(function()
 
 })
 </script>
+
 <!-- Specific Page Scripts END -->
 <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
 
@@ -1369,5 +1384,22 @@ $(window).load(function()
     })();
 </script>
 
+<script>
 
+    $(function () {
 
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+
+function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result);
+    $('#myImg1').attr('src', e.target.result);
+};
+
+</script>

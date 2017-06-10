@@ -19,12 +19,17 @@ namespace web.core.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(50);
 
+            this.Property(t => t.UserId)
+                .HasMaxLength(50);
+
             // Table & Column Mappings
             this.ToTable("UserInfo");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.FirstName).HasColumnName("FirstName");
             this.Property(t => t.IsActive).HasColumnName("IsActive");
             this.Property(t => t.LastName).HasColumnName("LastName");
+            this.Property(t => t.UserId).HasColumnName("UserId");
+            this.Property(t => t.Date).HasColumnName("Date");
         }
     }
 }
