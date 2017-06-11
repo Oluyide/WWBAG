@@ -1,7 +1,41 @@
-﻿@{
+﻿@model WWBG.Models.Video
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
-
+<object width="640" height="480">
+    <param name="movie" value="https://www.youtube.com/embed/live_stream?channel=channelsweb" />
+    <param name="allowfullscreen" value="allowfullscreen" />
+    <param name="webkitallowfullscreen" value="true" />
+    <param name="mozallowfullscreen" value="true" />
+    <param name="allowscriptaccess" value="always" />
+    <param name="wmode" value="opaque" />
+    <embed src="http://www.youtube.com/v/channel=channelsweb"
+           type="application/x-shockwave-flash" width="427"
+           height="258" allowscriptaccess="always" allowfullscreen="true"
+           webkitallowfullscreen="true" mozallowfullscreen="true"
+           wmode="opaque"></embed>
+</object>
 <p>Use this area to provide additional information.</p>
+
+
+@foreach (var v in Model.info)
+{
+<object width="640" height="480">
+    <param name="movie" value="http://www.youtube.com/v/@v.VideoId&fs=1" />
+    <param name="allowfullscreen" value="allowfullscreen" />
+    <param name="webkitallowfullscreen" value="true" />
+    <param name="mozallowfullscreen" value="true" />
+    <param name="allowscriptaccess" value="always" />
+    <param name="wmode" value="opaque" />
+    <embed src="http://www.youtube.com/v/@v.VideoId&fs=1"
+           type="application/x-shockwave-flash" width="427"
+           height="258" allowscriptaccess="always" allowfullscreen="allowfullscreen"
+           webkitallowfullscreen="true" mozallowfullscreen="true"
+           wmode="opaque"></embed>
+</object>
+
+@*<iframe width="560" height="315" src="http://www.youtube.com/v/@v.VideoId?rel=0&fs=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>*@
+   
+}

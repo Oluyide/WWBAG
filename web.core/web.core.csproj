@@ -64,8 +64,10 @@
     <Compile Include="Models\Mapping\AspNetUserMap.cs" />
     <Compile Include="Models\Mapping\ContactTableMap.cs" />
     <Compile Include="Models\Mapping\UserInfoMap.cs" />
+    <Compile Include="Models\Mapping\UserPostTableMap.cs" />
     <Compile Include="Models\Mapping\UserProfileMap.cs" />
     <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Models\UserPostTable.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\WWBGContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

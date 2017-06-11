@@ -220,6 +220,8 @@ namespace WWBG.Controllers
                     UserInfo info = new UserInfo();
                     info.FirstName = model.FirstName;
                     info.LastName = model.LastName;
+                    info.Email = model.Email;
+                    info.UserId = User.Identity.GetUserId();
                     info.IsActive = false;
                     repo.Add(info);
 

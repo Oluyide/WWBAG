@@ -11,5 +11,6 @@ namespace web.core.Models
         public string LastName { get; set; }
         public string UserId { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public string Email { get; set; }
     }
 }

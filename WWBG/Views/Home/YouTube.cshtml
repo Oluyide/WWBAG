@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "YouTube";
+}
+
+<h2>YouTube</h2>
+
+@foreach (var v in Model)
+{
+    <object width="427" height="258">
+        <param name="movie" value="http://www.youtube.com/v/@v.YouTubeMovieID" />
+        <param name="allowFullScreen" value="true" />
+        <param name="allowscriptaccess" value="always" />
+        <param name="wmode" value="opaque" />
+        <embed src="http://www.youtube.com/v/@v.YouTubeMovieID"
+               type="application/x-shockwave-flash" width="427"
+               height="258" allowscriptaccess="always" allowfullscreen="true"
+               wmode="opaque"></embed>
+    </object>
+
+}

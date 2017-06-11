@@ -22,6 +22,9 @@ namespace web.core.Models.Mapping
             this.Property(t => t.UserId)
                 .HasMaxLength(50);
 
+            this.Property(t => t.Email)
+                .HasMaxLength(50);
+
             // Table & Column Mappings
             this.ToTable("UserInfo");
             this.Property(t => t.Id).HasColumnName("Id");
@@ -30,6 +33,7 @@ namespace web.core.Models.Mapping
             this.Property(t => t.LastName).HasColumnName("LastName");
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.Date).HasColumnName("Date");
+            this.Property(t => t.Email).HasColumnName("Email");
         }
     }
 }
