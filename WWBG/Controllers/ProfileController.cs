@@ -18,6 +18,42 @@ namespace WWBG.Controllers
         // GET: Profile
         public ActionResult Profile()
         {
+
+            List<SelectListItem> Academics = new List<SelectListItem>();
+            Academics.Add(new SelectListItem
+            {
+                Text = "Primary",
+                Value = "1"
+            });
+            Academics.Add(new SelectListItem
+            {
+                Text = "Secondary",
+                Value = "2",
+                Selected = true
+            });
+            Academics.Add(new SelectListItem
+            {
+                Text = "Tertiary",
+                Value = "3"
+            });
+
+            List<SelectListItem> gender = new List<SelectListItem>();
+            gender.Add(new SelectListItem
+            {
+                Text = "Male",
+                Value = "1"
+            });
+            gender.Add(new SelectListItem
+            {
+                Text = "Female",
+                Value = "2",
+                Selected = true
+            });
+
+
+            ViewBag.AcademicLevel = new SelectList(Academics, "Value", "Text");
+            ViewBag.gender = new SelectList(gender, "Value", "Text");
+
             ProfileModels model = new ProfileModels();
             var list = ListProfile();
             var list2 = ListUserInfo();
@@ -169,6 +205,95 @@ namespace WWBG.Controllers
 
             }
             return listuser;
+        }
+
+        public ActionResult Post (UserPostTableModel model, HttpPostedFileBase uploadedPassport)
+        {
+           
+       
+      var validImageTypes = new string[]
+                   {
+            "image/gif",
+            "image/jpeg",
+            "image/pjpeg",
+            "image/png",
+                    };
+                if (ModelState.IsValid)
+                {
+                    SqlRepository<UserPostTable> repo = new SqlRepository<UserPostTable>();
+                    UserPostTable post = new UserPostTable();
+
+
+                    post.Id = model.Id;
+                    post.Text = model.Text;
+                   
+                    post.UserId = User.Identity.GetUserId();
+                    post.Date = DateTime.Today;
+                   
+                    if (uploadedPassport != null)
+                    {
+                        if (!validImageTypes.Contains(uploadedPassport.ContentType))
+                        {
+                            ModelState.AddModelError("", "Please choose either a GIF, JPG or PNG image.");
+                            TempData["Picture"] = "You need to upload either a GIF, JPG, or PNG image.";
+                            return RedirectToAction("Edit");
+
+                        }
+                        else
+                        {
+                            string filename = System.IO.Path.GetFileName(uploadedPassport.FileName);
+                            string filename1 = User.Identity.Name.ToString() + "_" + filename;
+                            string physicalPath = Server.MapPath("~/Images/ProfilePic/" + filename1);
+                            uploadedPassport.SaveAs(physicalPath);
+
+                            post.Media = filename1;
+
+                        }
+
+                    }
+
+                    repo.Add(post);
+
+                    try
+                    {
+                        repo.SaveChanges();
+                        TempData["Success"] = "Post uploaded!";
+
+                    }
+                    catch (DbEntityValidationException dbEx)
+                    {
+                        foreach (var validationErrors in dbEx.EntityValidationErrors)
+                        {
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                Trace.TraceInformation("Property: {0} Error: {1}",
+                                                        validationError.PropertyName,
+                                                        validationError.ErrorMessage);
+                            }
+                        }
+                    }
+
+                    return RedirectToAction("Post");
+
+                }
+                else
+                {
+
+                    ModelState.AddModelError("", "Fill necessary fields");
+
+                }
+                return View(model);
+
+            }
+
+        
+        public ActionResult Event()
+        {
+            return View();
+        }
+        public ActionResult Ads()
+        {
+            return View();
         }
     }
 

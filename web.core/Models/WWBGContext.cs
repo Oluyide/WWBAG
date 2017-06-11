@@ -22,6 +22,7 @@ namespace web.core.Models
         public DbSet<AspNetUser> AspNetUsers { get; set; }
         public DbSet<ContactTable> ContactTables { get; set; }
         public DbSet<UserInfo> UserInfoes { get; set; }
+        public DbSet<UserPostTable> UserPostTables { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,6 +33,7 @@ namespace web.core.Models
             modelBuilder.Configurations.Add(new AspNetUserMap());
             modelBuilder.Configurations.Add(new ContactTableMap());
             modelBuilder.Configurations.Add(new UserInfoMap());
+            modelBuilder.Configurations.Add(new UserPostTableMap());
             modelBuilder.Configurations.Add(new UserProfileMap());
         }
     }

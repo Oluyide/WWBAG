@@ -27,4 +27,11 @@ namespace WWBG.Models
         public List<UserInfoModels> userInfoList { get; set; }
 
     }
+
+    public  class UserPostTableModel
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public string Media { get; set; }
+    }
 }
