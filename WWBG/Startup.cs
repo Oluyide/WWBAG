@@ -12,6 +12,7 @@ namespace WWBG
         {
             ConfigureAuth(app);
             createRolesandUsers();
+            app.MapSignalR();
         }
 
 

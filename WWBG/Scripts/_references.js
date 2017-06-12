@@ -2,6 +2,7 @@
 /// <reference path="../content/newcss1/js/custom.js" />
 /// <reference path="app/usertype.js" />
 /// <reference path="bootstrap.js" />
+/// <reference path="jquery.signalr-2.2.2.min.js" />
 /// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />

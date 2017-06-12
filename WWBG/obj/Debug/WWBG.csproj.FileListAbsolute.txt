@@ -383,3 +383,7 @@ C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Google.Apis.YouTube.v3.xml
 C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Google.GData.Client.dll
 C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Google.GData.Extensions.dll
 C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Google.GData.YouTube.dll
+C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\ENITILO ALICE\Documents\WWBAG\WWBG\bin\Microsoft.AspNet.SignalR.SystemWeb.xml

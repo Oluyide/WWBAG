@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -12,7 +13,7 @@ using WWBG.Models;
 
 namespace WWBG.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class ProfileController : Controller
     {
         // GET: Profile
@@ -295,6 +296,24 @@ namespace WWBG.Controllers
         {
             return View();
         }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public class Chat : Hub
+        {
+            public void EnviarMensagem(string apelido, string mensagem)
+            {
+                Clients.Caller(apelido, mensagem);
+            }
+        }
+        // GET: /ChatRoom/  
+        public ActionResult SignalRChat()
+        {
+            return View();
+        }
+
     }
 
 
