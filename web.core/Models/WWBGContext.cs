@@ -19,7 +19,7 @@ namespace web.core.Models
         public DbSet<AspNetRole> AspNetRoles { get; set; }
         public DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public DbSet<AspNetUser> AspNetUsers { get; set; }
+        public DbSet<AspNetUser> AspNetUsers { get; set; }      
         public DbSet<ContactTable> ContactTables { get; set; }
         public DbSet<UserInfo> UserInfoes { get; set; }
         public DbSet<UserPostTable> UserPostTables { get; set; }
@@ -31,6 +31,7 @@ namespace web.core.Models
             modelBuilder.Configurations.Add(new AspNetUserClaimMap());
             modelBuilder.Configurations.Add(new AspNetUserLoginMap());
             modelBuilder.Configurations.Add(new AspNetUserMap());
+           
             modelBuilder.Configurations.Add(new ContactTableMap());
             modelBuilder.Configurations.Add(new UserInfoMap());
             modelBuilder.Configurations.Add(new UserPostTableMap());

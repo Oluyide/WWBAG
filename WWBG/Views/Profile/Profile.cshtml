@@ -254,14 +254,9 @@
                                                         <div class="row mgbt-xs-0">
                                                             <div class="col-xs-9">
                                                                 
-                                                                @Html.DropDownList("Academics",  (SelectList)ViewBag.AcademicLevel)
-                                                                @Html.TextBoxFor(m => m.Academic, new
-                                                       {
-                                                           @class = "form-control ",
-                                                           @required = "",
-                                                           @placeholder = "Academic Level"
-                                                       })
-                                                                @*<input type="text" placeholder="Academic Level">*@
+                                                                @Html.DropDownListFor(m=>m.AcademicId, Model.AcademicLevel, new { @class = "form-control ", @required = "", @placeholder = "--Select--", @id = "yourDropdown" })
+                                                      
+                                                               
                                                             </div>
                                                             <!-- col-xs-9 -->
                                                             <div class="col-xs-2">
@@ -281,13 +276,38 @@
                                                     <!-- col-sm-10 -->
                                                 </div>
                                             <!-- form-group -->
-                                                <div class="form-group">
+                                                <div id="facTextBox" class="form-group">
                                                     <label class="col-sm-3 control-label">Faculty</label>
                                                     <div class="col-sm-9 controls">
                                                         <div class="row mgbt-xs-0">
                                                             <div class="col-xs-9">
-                                                                @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control ", @required = "", @placeholder = "Faculty" })
-                                                                @*<input type="text" placeholder="Country">*@
+                                                                @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control ", @required = "", @placeholder = "Faculty", @id="facTextBox" })
+                                                               
+                                                            </div>
+                                                            <!-- col-xs-9 -->
+                                                            <div class="col-xs-2">
+                                                                <div class="btn-action">
+                                                                    <button data-toggle="dropdown" class="btn btn-icon dropdown-toggle vd_bg-yellow vd_white" type="button"><i class="fa fa-globe fa-fw"></i></button>
+                                                                    <ul class="dropdown-menu pull-right">
+                                                                        <li><a href="#"><i class="fa fa-globe fa-fw"></i> Public</a></li>
+                                                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Friends</a></li>
+                                                                        <li><a href="#"><i class="fa fa-lock fa-fw"></i> Only Me</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- btn-action col-sm-10 -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- row -->
+                                                    </div>
+                                                    <!-- col-sm-10 -->
+                                                </div>
+                                                <div id="classTextBox" class="form-group">
+                                                    <label class="col-sm-3 control-label">Class</label>
+                                                    <div class="col-sm-9 controls">
+                                                        <div class="row mgbt-xs-0">
+                                                            <div class="col-xs-9">
+                                                                @Html.TextBoxFor(m => m.Class, new { @class = "form-control ", @required = "", @placeholder = "Class", @id = "classTextBox" })
+
                                                             </div>
                                                             <!-- col-xs-9 -->
                                                             <div class="col-xs-2">
@@ -321,7 +341,7 @@
                                                                     <input type="radio" value="option4" id="optionsRadios4" name="optionsRadios2">
                                                                     <label for="optionsRadios4"> Female </label>
                                                                 </span>*@
-                                                                @Html.TextBoxFor(m => m.Sex, new { @class = "form-control ", @required = "", @placeholder = "Sex" })
+                                                                @Html.DropDownListFor(m => m.GenderId, Model.Gender, "--Select--")
 
 
                                                             </div>
@@ -1385,7 +1405,29 @@ $(window).load(function()
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 </script>
+<script>
 
+    $(document).ready(function () {
+        $('#classTextBox').hide();
+        $('#facTextBox').hide();
+
+       
+       
+    });
+
+    $('#yourDropdown').on('change', function () {
+        if (this.value == '3')
+
+        {
+            $('#facTextBox').show();
+            $("#classTextBox").hide();
+        }
+        else {
+            $("#classTextBox").show();
+            $('#facTextBox').hide();
+        }
+    });
+</script>
 <script>
 
     $(function () {

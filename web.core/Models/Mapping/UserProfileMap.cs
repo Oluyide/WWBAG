@@ -23,6 +23,9 @@ namespace web.core.Models.Mapping
             this.Property(t => t.Faculty)
                 .HasMaxLength(50);
 
+            this.Property(t => t.Class)
+                .HasMaxLength(50);
+
             this.Property(t => t.Sex)
                 .HasMaxLength(50);
 
@@ -48,6 +51,7 @@ namespace web.core.Models.Mapping
             this.Property(t => t.State).HasColumnName("State");
             this.Property(t => t.Academic).HasColumnName("Academic");
             this.Property(t => t.Faculty).HasColumnName("Faculty");
+            this.Property(t => t.Class).HasColumnName("Class");
             this.Property(t => t.Sex).HasColumnName("Sex");
             this.Property(t => t.DateBirth).HasColumnName("DateBirth");
             this.Property(t => t.PhoneNumber).HasColumnName("PhoneNumber");

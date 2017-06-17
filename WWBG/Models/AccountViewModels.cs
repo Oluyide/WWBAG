@@ -1,9 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace WWBG.Models
 {
+    public class UsersContext : DbContext
+    {
+        public UsersContext()
+            : base("WWBGContext")
+        {
+        }
+
+        public DbSet<UserProf> UserProfs { get; set; }
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

@@ -10,6 +10,7 @@ namespace web.core.Models
         public string State { get; set; }
         public string Academic { get; set; }
         public string Faculty { get; set; }
+        public string Class { get; set; }
         public string Sex { get; set; }
         public string DateBirth { get; set; }
         public string PhoneNumber { get; set; }

@@ -14,11 +14,21 @@ namespace WWBG.Controllers
 
 
 
-        public ActionResult YouTube()
+        public ActionResult LiveYouTube()
         {
        
 
             return View();
+        }
+        public ActionResult YouTubeVideos()
+        {
+            Video model = new Video();
+            var list = ListProfile();
+           
+            model.info = list;
+          
+            
+            return View(model);
         }
         public ActionResult Fixture()
         {

@@ -1,0 +1,36 @@
+﻿@model WWBG.Models.Video
+@{
+    ViewBag.Title = "YouTubeVideos";
+    //Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div class="vd_content-wrapper">
+    <div class="vd_container">
+        <div class="vd_content clearfix">
+            <div class="vd_head-section clearfix">
+                <div class="vd_panel-header">
+
+                    @foreach (var v in Model.info)
+                    {
+                        <object width="640" height="480">
+                            <param name="movie" value="http://www.youtube.com/v/@v.VideoId&fs=1" />
+                            <param name="allowfullscreen" value="allowfullscreen" />
+                            <param name="webkitallowfullscreen" value="true" />
+                            <param name="mozallowfullscreen" value="true" />
+                            <param name="allowscriptaccess" value="always" />
+                            <param name="wmode" value="opaque" />
+                            <embed src="http://www.youtube.com/v/@v.VideoId&fs=1"
+                                   type="application/x-shockwave-flash" width="427"
+                                   height="258" allowscriptaccess="always" allowfullscreen="allowfullscreen"
+                                   webkitallowfullscreen="true" mozallowfullscreen="true"
+                                   wmode="opaque"></embed>
+                        </object>
+
+                        @*<iframe width="560" height="315" src="http://www.youtube.com/v/@v.VideoId?rel=0&fs=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>*@
+
+                    }
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

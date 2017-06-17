@@ -9,6 +9,17 @@ namespace WWBG
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                       "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                        "~/Scripts/jquery-ui-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.unobtrusive*",
+                        "~/Scripts/jquery.validate*"));
+
+          
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,6 +38,7 @@ namespace WWBG
                       "~/Content/bootstrap.css", "~/Content/themes/base/jquery-ui.min.css", "~/Content/themes/base/datepicker.css", "~/Content/NewCSS1/custom.css",
                       "~/Content/NewCSS1/custom.min.css",
                       "~/Content/site.css"));
+
 
         }
     }

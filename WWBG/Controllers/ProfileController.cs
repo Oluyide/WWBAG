@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -16,11 +17,18 @@ namespace WWBG.Controllers
    // [Authorize]
     public class ProfileController : Controller
     {
+        private WallEntities db = new WallEntities();
         // GET: Profile
         public ActionResult Profile()
         {
 
             List<SelectListItem> Academics = new List<SelectListItem>();
+            Academics.Add(new SelectListItem
+            {
+                Text = "Choose",
+                Value = "0",
+                Selected = true
+            });
             Academics.Add(new SelectListItem
             {
                 Text = "Primary",
@@ -30,7 +38,7 @@ namespace WWBG.Controllers
             {
                 Text = "Secondary",
                 Value = "2",
-                Selected = true
+                
             });
             Academics.Add(new SelectListItem
             {
@@ -48,9 +56,10 @@ namespace WWBG.Controllers
             {
                 Text = "Female",
                 Value = "2",
-                Selected = true
+                
             });
 
+   
 
             ViewBag.AcademicLevel = new SelectList(Academics, "Value", "Text");
             ViewBag.gender = new SelectList(gender, "Value", "Text");
@@ -62,6 +71,9 @@ namespace WWBG.Controllers
             model.userInfoList = list2;
             ViewBag.profile = list.SingleOrDefault();
             ViewBag.info = list2.SingleOrDefault();
+            model.AcademicLevel = Academics;
+            model.AcademicId = 0;
+            model.Gender = gender;
             return View(model);
         }
 
@@ -81,19 +93,20 @@ namespace WWBG.Controllers
             {
                 SqlRepository<UserProfile> repo = new SqlRepository<UserProfile>();
                 UserProfile profile = new UserProfile();
-                
+                UserProf prof = new UserProf();
 
-                profile.Academic = model.Academic;
+                profile.Academic = model.AcademicLevel.ToString();
                 profile.Country = model.Country;
                 profile.DateBirth = model.DateBirth;
                 profile.Email = model.Email;
                 profile.Faculty = model.Faculty;
+                profile.Class = model.Class;
                 profile.Id = model.Id;
                 profile.PhoneNumber = model.PhoneNumber;
                
                 profile.UserId = User.Identity.GetUserId();
                 profile.Date = DateTime.Today;
-                profile.Sex = model.Sex;
+                profile.Sex = model.Gender.ToString();
                 profile.State = model.State;
                 if (uploadedPassport != null)
                 {
@@ -101,27 +114,33 @@ namespace WWBG.Controllers
                     {
                         ModelState.AddModelError("", "Please choose either a GIF, JPG or PNG image.");
                         TempData["Picture"] = "You need to upload either a GIF, JPG, or PNG image.";
-                        return RedirectToAction("Edit");
+                        return RedirectToAction("Profile");
 
                     }
                     else
                     {
                         string filename = System.IO.Path.GetFileName(uploadedPassport.FileName);
                         string filename1 = User.Identity.Name.ToString() +"_"+ filename;
-                        string physicalPath = Server.MapPath("~/Images/ProfilePic/" + filename1);
+                        string physicalPath = Server.MapPath("~/Images/ProfilePic/" + filename1); 
+                        string physicalPath1 = Server.MapPath("~/Images/ProfileImages /"+ filename1);
                         uploadedPassport.SaveAs(physicalPath);
+                        uploadedPassport.SaveAs(physicalPath1);
 
                         profile.Picture = filename1;
+                        prof.UserName = profile.UserId;
+                        prof.AvatarExt = filename1;
 
                     }
 
                 }
 
                 repo.Add(profile);
+                db.UserProfs.Add(prof);
 
                 try
                 {
                     repo.SaveChanges();
+                    db.SaveChanges();
                     TempData["Success"] = "Profile updated!";
 
                 }
@@ -207,7 +226,19 @@ namespace WWBG.Controllers
             }
             return listuser;
         }
-
+        public ActionResult Post()
+        {
+            UserPostTableModel model = new UserPostTableModel();
+            
+            var list2 = ListUserInfo();
+            
+            model.userInfoList = list2;
+           
+            ViewBag.info = list2.SingleOrDefault();
+            
+            return View(model);
+        }
+        [HttpPost]
         public ActionResult Post (UserPostTableModel model, HttpPostedFileBase uploadedPassport)
         {
            
@@ -290,8 +321,37 @@ namespace WWBG.Controllers
         
         public ActionResult Event()
         {
-            return View();
+            UserPostTableModel model = new UserPostTableModel();
+            model.userPostList = ListPostInfo();
+
+
+            return View(model);
         }
+        public List<UserPostTableModel> ListPostInfo()
+        {
+
+            SqlRepository<UserPostTable> repo = new SqlRepository<UserPostTable>();
+            string userid = User.Identity.GetUserId();
+
+            List<UserPostTableModel> listuser = new List<UserPostTableModel>();
+
+            List<UserPostTable> userList = repo.GetAll().OrderBy(x =>x.Id).ToList();
+
+            foreach (var a in userList)
+            {
+                UserPostTableModel model = new UserPostTableModel();
+                model.Text = a.Text;
+                model.Media = a.Media;
+               
+                model.Id = a.Id;
+                model.Date = a.Date;
+
+                listuser.Add(model);
+
+            }
+            return listuser;
+        }
+
         public ActionResult Ads()
         {
             return View();
@@ -301,18 +361,13 @@ namespace WWBG.Controllers
         {
             return View();
         }
-        public class Chat : Hub
-        {
-            public void EnviarMensagem(string apelido, string mensagem)
-            {
-                Clients.Caller(apelido, mensagem);
-            }
-        }
-        // GET: /ChatRoom/  
-        public ActionResult SignalRChat()
+
+        public ActionResult LetsChat()
         {
             return View();
         }
+           
+       
 
     }
 

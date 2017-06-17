@@ -19,6 +19,8 @@ namespace WWBG.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private WallEntities db = new WallEntities();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private IUsersServices _usersinfo;
@@ -215,13 +217,14 @@ namespace WWBG.Controllers
 
                 if (result.Succeeded)
                 {
-
+                    UserProf prof = new UserProf();
                     SqlRepository<UserInfo> repo = new SqlRepository<UserInfo>();
                     UserInfo info = new UserInfo();
                     info.FirstName = model.FirstName;
                     info.LastName = model.LastName;
                     info.Email = model.Email;
                     info.UserId = User.Identity.GetUserId();
+                 
                     info.IsActive = false;
                     repo.Add(info);
 
