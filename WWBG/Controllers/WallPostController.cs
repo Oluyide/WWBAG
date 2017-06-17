@@ -13,7 +13,7 @@ namespace WWBG.Controllers
 {
     public class WallPostController : ApiController
     {
-        private string imgFolder = "/Images/profileimages/";
+        private string imgFolder = "/Images/ProfileImages/";
         private string defaultAvatar = "user.png";
         private WallEntities db = new WallEntities();
         // GET api/WallPost

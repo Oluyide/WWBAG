@@ -74,6 +74,8 @@ namespace WWBG.Controllers
             model.AcademicLevel = Academics;
             model.AcademicId = 0;
             model.Gender = gender;
+
+
             return View(model);
         }
 
@@ -127,7 +129,7 @@ namespace WWBG.Controllers
                         uploadedPassport.SaveAs(physicalPath1);
 
                         profile.Picture = filename1;
-                        prof.UserName = profile.UserId;
+                        prof.UserName = profile.Email;
                         prof.AvatarExt = filename1;
 
                     }
@@ -222,8 +224,8 @@ namespace WWBG.Controllers
                 model.Date = a.Date;
                              
                 listuser.Add(model);
-
             }
+
             return listuser;
         }
         public ActionResult Post()

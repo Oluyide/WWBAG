@@ -434,6 +434,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\ProfileImages\1.png" />
+    <Content Include="Images\ProfileImages\ayodeleeenitilo%40gmail.com_10.JPG" />
+    <Content Include="Images\ProfileImages\ayodeleeenitilo%40gmail.com_11.JPG" />
+    <Content Include="Images\ProfileImages\user.png" />
+    <Content Include="Images\ProfilePic\ayodeleeenitilo%40gmail.com_11.JPG" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -547,8 +552,6 @@
     <Folder Include="Content\Profile\img\" />
     <Folder Include="Content\Profile\js\" />
     <Folder Include="Content\Profile\plugins\" />
-    <Folder Include="Images\ProfileImages\" />
-    <Folder Include="Images\ProfilePic\" />
     <Folder Include="vendors\" />
   </ItemGroup>
   <ItemGroup>

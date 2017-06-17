@@ -7,7 +7,7 @@ using WWBG.Filters;
 
 namespace WWBG.Controllers
 {
-    [InitializeSimpleMembership]
+  //  [InitializeSimpleMembership]
     
     public class PostController : Controller
     {
